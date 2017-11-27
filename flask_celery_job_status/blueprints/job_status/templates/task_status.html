@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+
+    <div>
+        <h1>All Task Statuses!</h1>
+    </div>
+
+    <div>
+        <form action="{{ url_for('job_status.create_task') }}" >
+            <input type="submit" value="Create Task" />
+        </form>
+        </br>
+
+        <form action="/job_status" >
+            <input type="submit" value="Go Back" />
+        </form>
+        </br>
+    </div>
+
+    <div>
+        <table align="left">
+          <thead>
+            <th align="left" width="30">ID</th>
+            <th align="left" width="300">Task ID</th>
+            <th align="left" width="300">Task Repr</th>
+            <th align="left" width="100">Status</th>
+            <th align="left" width="100">Result</th>
+          </thead>
+
+          <tbody>
+            {% for task in tasks %}
+              <tr>
+                <td>{{ loop.index0   }}</td>
+                <td>{{ task.id }}</td>
+                <td>{{ task.task_repr }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.result }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    </div>
+
+<script>
+    setTimeout(function(){
+       window.location.reload(1);
+    }, 3000);
+</script>
+
+</body>
+</html>

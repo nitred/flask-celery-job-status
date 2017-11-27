@@ -24,7 +24,7 @@ install_requires = ['future']
 test_requires = ['pytest', 'pytest-sugar', 'pytest-asyncio', 'pytest-cov', ]
 setup(
     name='flask-celery-job-status',
-    description="Some description about your project",
+    description="A basic project for displaying the status of job/tasks using flask, celery and redis.",
     long_description=long_description,
     version=get_version(),
     include_package_data=True,

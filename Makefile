@@ -19,10 +19,21 @@ docker_up:  clean
 	chmod +x ./wait-for-it.sh && \
 	./wait-for-it.sh localhost:6379 -- echo "Docker containers up and running!"
 
-recreate_env:        ## Recreate the docker environment and python anaconda environment.
-recreate_env:    docker_up
+
+celery_up:          ## run celery worker
+celery_up:
+	celery -A flask_celery_job_status.blueprints.job_status.tasks.celery worker
+
+
+recreate_py_env:          ## recreate python environments
+recreate_py_env:
 	conda env create --force -f dev_environment.yml && \
 	pip install -e .
+
+
+recreate_env:        ## Recreate the docker environment and python anaconda environment.
+recreate_env:    recreate_py_env docker_up celery_up
+
 
 run_server:            ## Run Server
 run_server:
