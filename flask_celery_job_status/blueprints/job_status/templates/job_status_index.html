@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+
+    <div>
+        <h1>Job Status Landing Page!</h1>
+        <p>Welcome!</p>
+    </div>
+
+    <div>
+        <form action="{{ url_for('job_status.create_job') }}" >
+            <input type="submit" value="Create Tasks" />
+        </form>
+
+        <form action="{{ url_for('job_status.active_job_ids') }}" >
+            <input type="submit" value="Active Job Ids" />
+        </form>
+
+        <form id="job_id_status" action="{{ url_for('job_status.job_id_status') }}">
+            <input type="text" name="job_id" value="">
+            <input type="submit" value="Job ID Status">
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+name: flask-celery-job-status
+channels:
+  - defaults
+dependencies:
+- python=3.6.3
+- pip:
+    - future
+    - Flask
+    - gunicorn
+    - docker-compose
+    - celery[redis]
