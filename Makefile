@@ -8,12 +8,12 @@ workers := $(DEFAULT_WORKERS)
 help:                ## Show available options with this Makefile
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-clean:          ## Remove all the docker containers.
-clean:
+docker_clean:          ## Remove all the docker containers.
+docker_clean:
 	cd docker && docker-compose down -v
 
 docker_up:			# Get docker up and running
-docker_up:  clean
+docker_up:  docker_clean
 	cd docker && \
 	docker-compose up -d && \
 	chmod +x ./wait-for-it.sh && \

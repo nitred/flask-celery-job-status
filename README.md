@@ -13,7 +13,7 @@ A basic project for displaying the status of job/tasks using flask, celery and r
   source activate flask-celery-job-status
   pip install -e .
   ```
-* Launch the Redis docker container.
+* Launch the Redis docker container. Use this command if you want to refresh Redis as well.
   ```bash
   $ make docker_up
   ```
