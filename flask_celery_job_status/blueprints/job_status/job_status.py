@@ -5,7 +5,10 @@ import random
 from flask import (Blueprint, current_app, jsonify, redirect, render_template,
                    request, url_for)
 
-from .tasks import add_two_numbers
+from .tasks import add_two_numbers, celery
+
+# from flask_celery_job_status.celery import celery
+
 
 logger = logging.getLogger(__name__)
 
@@ -18,6 +21,11 @@ job_status_handler = Blueprint(name='job_status',
 def get_all_tasks():
     """Return list of all tasks."""
     return current_app.config['all_tasks']
+
+
+def delete_all_tasks():
+    """Empty the list of all tasks."""
+    current_app.config['all_tasks'] = []
 
 
 @job_status_handler.before_app_first_request
@@ -56,6 +64,17 @@ def task_status():
     """Show all task status."""
     all_tasks = get_all_tasks()
     return render_template('task_status.html', tasks=all_tasks)
+
+
+@job_status_handler.route('/clear_tasks', methods=['GET'])
+def clear_tasks():
+    """Create a task."""
+    # NOTE: Purging does not work!
+    celery.control.purge()
+    delete_all_tasks()
+
+    # Redirecting to the task status.
+    return redirect(url_for('job_status.task_status'))
 
 
 @job_status_handler.route('/create_job', methods=['GET'])

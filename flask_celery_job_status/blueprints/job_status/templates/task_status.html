@@ -13,7 +13,10 @@
         <form action="{{ url_for('job_status.create_task') }}" >
             <input type="submit" value="Create Task" />
         </form>
-        </br>
+
+        <form action="{{ url_for('job_status.clear_tasks') }}" >
+            <p><input type="submit" value="Clear All Tasks" style="display: inline;"/> <<< Does not really cancel tasks on Celery! </p>
+        </form>
 
         <form action="/job_status" >
             <input type="submit" value="Go Back" />
