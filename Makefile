@@ -22,7 +22,7 @@ docker_up:  clean
 
 celery_up:          ## run celery worker
 celery_up:
-	celery -A flask_celery_job_status.blueprints.job_status.tasks.celery worker
+	celery -A flask_celery_job_status worker
 
 
 recreate_py_env:          ## recreate python environments
