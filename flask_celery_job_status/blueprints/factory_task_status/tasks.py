@@ -2,7 +2,9 @@
 import random
 import time
 
-from flask_celery_job_status.celery import celery
+from flask_celery_job_status.server import create_celery_app
+
+celery = create_celery_app()
 
 
 @celery.task
