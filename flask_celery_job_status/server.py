@@ -3,9 +3,10 @@ import logging
 import os
 
 from flask import Flask
-
 from flask_celery_job_status.blueprints.job_status import job_status_handler
 from flask_celery_job_status.blueprints.landing import landing_handler
+from flask_celery_job_status.blueprints.naive_task_status import \
+    naive_task_status
 
 logger = logging.getLogger(__name__)
 
@@ -17,6 +18,7 @@ CONFIG_PATH = os.path.abspath(os.path.join(BASE_PATH, "config/config.yaml"))
 def register_app(app):
     """Initialize blueprints."""
     app.register_blueprint(landing_handler, url_prefix="/", )
+    app.register_blueprint(naive_task_status, url_prefix="/naive_task_status", )
     app.register_blueprint(job_status_handler, url_prefix="/job_status", )
 
 
