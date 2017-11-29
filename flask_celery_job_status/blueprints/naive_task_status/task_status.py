@@ -16,18 +16,18 @@ naive_task_status_handler = Blueprint(name='naive_task_status',
 
 def get_all_tasks():
     """Return list of all tasks."""
-    return current_app.config['all_tasks']
+    return current_app.config['nts_all_tasks']
 
 
 def delete_all_tasks():
     """Empty the list of all tasks."""
-    current_app.config['all_tasks'] = []
+    current_app.config['nts_all_tasks'] = []
 
 
 @naive_task_status_handler.before_app_first_request
 def before_app_first_request():
     """Create some global resources before first request."""
-    current_app.config['all_tasks'] = []
+    current_app.config['nts_all_tasks'] = []
 
 
 @naive_task_status_handler.route('/', methods=['GET'])
