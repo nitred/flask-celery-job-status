@@ -1,6 +1,5 @@
-"""Mocker Service."""
+"""Flask Celery Job Status Server."""
 import logging
-import os
 
 from flask import Flask
 from flask_celery_job_status.blueprints.factory_task_status import \
@@ -11,10 +10,6 @@ from flask_celery_job_status.blueprints.naive_task_status import \
     naive_task_status_handler
 
 logger = logging.getLogger(__name__)
-
-THIS_FILE_PATH = os.path.abspath(__file__)
-BASE_PATH = os.path.abspath(os.path.join(os.path.dirname(THIS_FILE_PATH), "../../"))
-CONFIG_PATH = os.path.abspath(os.path.join(BASE_PATH, "config/config.yaml"))
 
 
 def register_app(app):
