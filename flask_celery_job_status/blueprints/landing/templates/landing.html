@@ -10,12 +10,17 @@
     </div>
 
     <div>
-        <form action="/naive_task_status" >
-            <input type="submit" value="Naive Celery Tasks" />
+        <form action="{{ url_for('naive_task_status.index') }}" >
+            <input type="submit" value="Naive Celery - Task Status" />
         </form>
         </br>
 
-        <form action="/job_status" >
+        <form action="{{ url_for('factory_task_status.index') }}" >
+            <input type="submit" value="Factory Celery - Task Status" />
+        </form>
+        </br>
+
+        <form action="{{ url_for('job_status.index') }}" >
             <input type="submit" value="Jobs & Tasks" />
         </form>
     </div>

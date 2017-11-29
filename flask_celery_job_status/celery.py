@@ -6,5 +6,6 @@ celery = Celery('tasks',
                 broker='redis://localhost:6379',
                 include=[
                     'flask_celery_job_status.blueprints.naive_task_status.tasks',
+                    'flask_celery_job_status.blueprints.factory_task_status.tasks',
                     'flask_celery_job_status.blueprints.job_status.tasks',
                 ])

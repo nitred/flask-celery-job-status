@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+
+    <div>
+        <h1>Factory Celery - Task Status Landing Page!</h1>
+    </div>
+
+    <div>
+        <form action="{{ url_for('factory_task_status.task_status') }}" >
+            <input type="submit" value="Factory Celery - Task Status Funtionality" />
+        </form>
+        </br>
+
+        <form action="{{ url_for('landing.landing') }}" >
+            <input type="submit" value="Go Back" />
+        </form>
+    </div>
+
+</body>
+</html>
