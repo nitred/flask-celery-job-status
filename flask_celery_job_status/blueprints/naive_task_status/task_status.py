@@ -8,10 +8,10 @@ from .tasks import add_two_numbers, celery
 
 logger = logging.getLogger(__name__)
 
-naive_task_status = Blueprint(name='naive_task_status',
-                              import_name=__name__,
-                              template_folder='templates',
-                              static_folder='static')
+naive_task_status_handler = Blueprint(name='naive_task_status',
+                                      import_name=__name__,
+                                      template_folder='templates',
+                                      static_folder='static')
 
 
 def get_all_tasks():
@@ -24,19 +24,19 @@ def delete_all_tasks():
     current_app.config['all_tasks'] = []
 
 
-@naive_task_status.before_app_first_request
+@naive_task_status_handler.before_app_first_request
 def before_app_first_request():
     """Create some global resources before first request."""
     current_app.config['all_tasks'] = []
 
 
-@naive_task_status.route('/', methods=['GET'])
+@naive_task_status_handler.route('/', methods=['GET'])
 def index():
     """Job Status Index."""
     return render_template('nts_index.html')
 
 
-@naive_task_status.route('/create_task', methods=['GET'])
+@naive_task_status_handler.route('/create_task', methods=['GET'])
 def create_task():
     """Create a task."""
     # Generating random argument values
@@ -55,14 +55,14 @@ def create_task():
     return redirect(url_for('naive_task_status.task_status'))
 
 
-@naive_task_status.route('/task_status', methods=['GET'])
+@naive_task_status_handler.route('/task_status', methods=['GET'])
 def task_status():
     """Show all task status."""
     all_tasks = get_all_tasks()
     return render_template('nts_task_status.html', tasks=all_tasks)
 
 
-@naive_task_status.route('/clear_tasks', methods=['GET'])
+@naive_task_status_handler.route('/clear_tasks', methods=['GET'])
 def clear_tasks():
     """Create a task."""
     # NOTE: Purging does not work!
