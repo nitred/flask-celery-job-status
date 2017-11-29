@@ -8,6 +8,6 @@ landing_handler = Blueprint(name='landing',
 
 
 @landing_handler.route('/', methods=['GET'])
-def landing_page():
+def landing():
     """Render landing page."""
     return render_template('landing.html')

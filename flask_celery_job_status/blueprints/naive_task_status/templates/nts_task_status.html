@@ -18,7 +18,7 @@
             <p><input type="submit" value="Clear All Tasks" style="display: inline;"/> <<< Does not really cancel tasks on Celery! </p>
         </form>
 
-        <form action="/naive_task_status" >
+        <form action="{{ url_for('naive_task_status.index') }}" >
             <input type="submit" value="Go Back" />
         </form>
         </br>
